@@ -42,7 +42,9 @@ to hurt;hurt;hurt;pijn doen
 to keep;kept;kept;houden
 to know;knew;known;weten/kennen
 to learn;learnt/learned;learnt/learned;leren
-to leave;left;left;laten/verhuren
+to leave;left;left;achterlaten
+to lend;lent;lent;(uit)lenen
+to let;let;let;laten/verhuren
 to lie;lay;lain;liggen
 to lose;lost;lost;verliezen
 to make;made;made;maken
