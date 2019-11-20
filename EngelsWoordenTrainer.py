@@ -30,13 +30,7 @@ class WordList():
         return self.word_list   
 
 class WordGame():
-    max_words = 0
     wordlist = []
-    def __init__(self):
-        _wordlist = WordList()
-        self.wordlist = _wordlist.get_word_list()
-        self.max_words = len(self.wordlist)
-
     def __get_word(self): 
         random.shuffle(self.wordlist)
         return self.wordlist[0]
@@ -49,14 +43,22 @@ class WordGame():
         print("**********************************************************************")
 
     def play(self): 
-        self.print_explanation()
-        while (len(self.wordlist) > 0): 
-            play_word = self.__get_word()
-            word = input("({})  ==> {} ({}): ".format(str(len(self.wordlist)),play_word[0], play_word[3]))
-            if word.lower() ==play_word[1].lower(): 
-                del self.wordlist[0]
-            else:
-                print("Nope: that is {}".format(play_word[1]))
+        keep_playing = True
+        while keep_playing:
+            wordlist = WordList()
+            self.wordlist = wordlist.get_word_list()    
+            self.print_explanation()
+            while (len(self.wordlist) > 0): 
+                play_word = self.__get_word()
+                word = input("({})  ==> {} ({}): ".format(str(len(self.wordlist)),play_word[0], play_word[3]))
+                if word.lower() == play_word[1].lower(): 
+                    del self.wordlist[0]
+                else:
+                    print("Nope: that is {}".format(play_word[1]))
+            again = input("Nice!! that wear al the words. Shall we do it again (Y)?")
+            if not (again.lower() == "y"): 
+                keep_playing = False
+
 
 g = WordGame()
 g.play() 
