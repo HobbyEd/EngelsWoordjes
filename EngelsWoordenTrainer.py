@@ -42,6 +42,7 @@ class WordGame():
         return self.wordlist[0]
 
     def print_explanation(self): 
+        os.system('cls' if os.name=='nt' else 'clear')
         print("**********************************************************************")
         print("* Welcome at the Englisch word game. This game will teach you the    *")
         print("* irregular verbs. good luck                                         *")
@@ -58,4 +59,4 @@ class WordGame():
                 print("Nope: that is {}".format(play_word[1]))
 
 g = WordGame()
-g.play()
+g.play() 
