@@ -55,7 +55,7 @@ class WordGame():
                     del self.wordlist[0]
                 else:
                     print("Nope: that is {}".format(play_word[1]))
-            again = input("Nice!! that wear al the words. Shall we do it again (Y)?")
+            again = input("Nice!! that were al the words. Shall we do it again (Y)?")
             if not (again.lower() == "y"): 
                 keep_playing = False
 
