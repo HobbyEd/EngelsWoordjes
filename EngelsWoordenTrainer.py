@@ -16,7 +16,7 @@ class WordList():
 
     def __read_file(self):
         try: 
-            file = open("woorden.txt", "r")
+            file = open("korte_woordenlijst.txt", "r")
             list = []
             for line in file.readlines():
                 if line.strip():
@@ -39,7 +39,8 @@ class WordGame():
         os.system('cls' if os.name=='nt' else 'clear')
         print("**********************************************************************")
         print("* Welcome at the Englisch word game. This game will teach you the    *")
-        print("* irregular verbs. good luck                                         *")
+        print("* irregular verbs. Enter both the past and the past participle       *")
+        print("* seperated by space. Good luck!!                                    *")
         print("**********************************************************************")
 
     def play(self): 
@@ -50,15 +51,20 @@ class WordGame():
             self.print_explanation()
             while (len(self.wordlist) > 0): 
                 play_word = self.__get_word()
-                word = input("({})  ==> {} ({}): ".format(str(len(self.wordlist)),play_word[0], play_word[3]))
-                if word.lower() == play_word[1].lower(): 
-                    del self.wordlist[0]
+                answer = input("({})  ==> {} ({}): ".format(str(len(self.wordlist)),play_word[0], play_word[3]))
+                answerlist = answer.split(" ")
+                if len(answerlist) == 2: #check whether two words have been entered 
+                    past = answerlist[0] 
+                    past_participle = answerlist[1]
+                    if (past.lower() == play_word[1].lower()) and (past_participle.lower() == play_word[2].lower()): 
+                        del self.wordlist[0]
+                    else:
+                        print("Nope: past is \033[92m{}\033[0m and past participle is \033[92m{}\033[0m".format(play_word[1], play_word[2]))
                 else:
-                    print("Nope: that is {}".format(play_word[1]))
+                    print("Enter both the past and the past participle seperated by space.")
             again = input("Nice!! that were al the words. Shall we do it again (Y)?")
             if not (again.lower() == "y"): 
                 keep_playing = False
-
 
 g = WordGame()
 g.play() 
